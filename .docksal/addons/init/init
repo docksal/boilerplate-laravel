@@ -13,13 +13,14 @@ LARAVEL_ROOT="laravel"
 
 # ---------- Runtime ------------
 
-[ -d "$PROJECT_ROOT/$LARAVEL_ROOT" ] &&
-  echo -e "${yellow}Directory exists${NC}: $PROJECT_ROOT/$LARAVEL_ROOT" &&
-  echo "Delete this directory and start Laravel installation?" &&
-  echo "Press Enter to continue or Ctrl-C to cancel..."
-read -p ""
+if [ -d "$PROJECT_ROOT/$LARAVEL_ROOT" ]; then
+  echo -e "${yellow}Directory exists${NC}: $PROJECT_ROOT/$LARAVEL_ROOT"
+  echo "Delete this directory and start Laravel installation?"
+  echo "Press Enter to delete it and continue or Ctrl-C to cancel..."
+  read -p ""
+fi
 
-rm -r "$PROJECT_ROOT/$LARAVEL_ROOT"
+rm -r "$PROJECT_ROOT/$LARAVEL_ROOT" 2>/dev/null
 
 # Reset containers
 fin reset -f
