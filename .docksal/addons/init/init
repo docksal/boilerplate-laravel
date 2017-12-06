@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+LARAVEL_ROOT="laravel"
+
 fin reset -f
 
 # Require installer
@@ -7,8 +9,7 @@ fin exec composer global require "laravel/installer"
 
 # Install laravel
 cd "$PROJECT_ROOT"
-composer create-project --prefer-dist laravel/laravel docroot
+composer create-project --prefer-dist laravel/laravel "$LARAVEL_ROOT"
 
 echo "Copying Datbase settings..."
-echo "$ADDON_PATH"
-cp "$ADDON_PATH/config/database.php" "$PROJECT_ROOT/$DOCROOT/config/database.php"
+cp "$ADDON_ROOT/config/database.php" "$PROJECT_ROOT/$LARAVEL_ROOT/config/database.php"
