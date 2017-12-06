@@ -34,5 +34,5 @@ composer create-project --prefer-dist laravel/laravel "$LARAVEL_ROOT"
 echo "Copying Datbase settings..."
 cp "$ADDON_ROOT/config/database.php" "$PROJECT_ROOT/$LARAVEL_ROOT/config/database.php"
 
-echo-green "Done!"
+echo -e "${green}Done!${NC}"
 echo -e "  URL: ${yellow}http://$VIRTUAL_HOST${NC}"
