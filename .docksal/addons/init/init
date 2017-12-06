@@ -14,7 +14,7 @@ LARAVEL_ROOT="laravel"
 # ---------- Runtime ------------
 
 [ -d "$PROJECT_ROOT/$LARAVEL_ROOT" ] &&
-  echo -e "${yellow}Direcotry exists${NC}: $PROJECT_ROOT/$LARAVEL_ROOT" &&
+  echo -e "${yellow}Directory exists${NC}: $PROJECT_ROOT/$LARAVEL_ROOT" &&
   echo "Delete this directory and start Laravel installation?" &&
   echo "Press Enter to continue or Ctrl-C to cancel..."
 read -p ""
