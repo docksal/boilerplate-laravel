@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
 
+# Console colors
+red='\033[0;91m'
+red_bg='\033[101m'
+yellow_bg='\033[43;90m'
+green='\033[0;32m'
+green_bg='\033[42m'
+yellow='\033[1;33m'
+NC='\033[0m'
+
 LARAVEL_ROOT="laravel"
 
+# ---------- Runtime ------------
+
+[ -d "$PROJECT_ROOT/$LARAVEL_ROOT" ] &&
+  echo -e "${yellow}Direcotry exists${NC}: $PROJECT_ROOT/$LARAVEL_ROOT" &&
+  echo "Delete this directory and start Laravel installation?" &&
+  echo "Press Enter to continue or Ctrl-C to cancel..."
+read -p ""
+
+rm -r "$PROJECT_ROOT/$LARAVEL_ROOT"
+
+# Reset containers
 fin reset -f
 
 # Require installer
@@ -13,3 +33,6 @@ composer create-project --prefer-dist laravel/laravel "$LARAVEL_ROOT"
 
 echo "Copying Datbase settings..."
 cp "$ADDON_ROOT/config/database.php" "$PROJECT_ROOT/$LARAVEL_ROOT/config/database.php"
+
+echo-green "Done!"
+echo -e "  URL: ${yellow}http://$VIRTUAL_HOST${NC}"
