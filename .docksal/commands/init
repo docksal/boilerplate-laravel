@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Require installer
+fin exec composer global require "laravel/installer"
+
+# Install laravel
+cd "$PROJECT_ROOT"
+composer create-project --prefer-dist laravel/laravel docroot
