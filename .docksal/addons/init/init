@@ -30,7 +30,7 @@ fin exec composer global require "laravel/installer"
 
 # Install laravel
 cd "$PROJECT_ROOT"
-composer create-project --prefer-dist laravel/laravel "$LARAVEL_ROOT"
+fin exec composer create-project --prefer-dist laravel/laravel "$LARAVEL_ROOT"
 
 echo "Copying Datbase settings..."
 cp "$ADDON_ROOT/config/database.php" "$PROJECT_ROOT/$LARAVEL_ROOT/config/database.php"
