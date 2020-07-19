@@ -40,6 +40,9 @@ sed -i 's/DB_DATABASE=laravel/DB_DATABASE=default/g' .env
 sed -i 's/DB_USERNAME=root/DB_USERNAME=user/g' .env
 sed -i 's/DB_PASSWORD=/DB_PASSWORD=user/g' .env
 
+echo "Installing artisan addon..."
+fin addon install artisan
+
 echo "------------------------------------"
 echo -e "${green}Installation complete.${NC}"
 echo -e "  URL: ${yellow}http://$VIRTUAL_HOST${NC}"
