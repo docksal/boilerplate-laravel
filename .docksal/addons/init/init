@@ -9,7 +9,7 @@ green_bg='\033[42m'
 yellow='\033[1;33m'
 NC='\033[0m'
 
-LARAVEL_ROOT="laravel"
+LARAVEL_ROOT="web"
 
 # ---------- Runtime ------------
 
@@ -33,7 +33,14 @@ cd "$PROJECT_ROOT"
 fin exec composer create-project --prefer-dist laravel/laravel "$LARAVEL_ROOT"
 
 echo "Copying Datbase settings..."
-cp "$ADDON_ROOT/config/database.php" "$PROJECT_ROOT/$LARAVEL_ROOT/config/database.php"
+cd "$PROJECT_ROOT/$LARAVEL_ROOT"
+sed -i 's/DB_HOST=127.0.0.1/DB_HOST=db/g' .env
+sed -i 's/DB_DATABASE=laravel/DB_DATABASE=default/g' .env
+sed -i 's/DB_USERNAME=root/DB_USERNAME=user/g' .env
+sed -i 's/DB_PASSWORD=/DB_PASSWORD=user/g' .env
+
+echo "Installing artisan addon..."
+fin addon install artisan
 
 echo "------------------------------------"
 echo -e "${green}Installation complete.${NC}"
